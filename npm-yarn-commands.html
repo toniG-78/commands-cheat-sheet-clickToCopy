@@ -1,112 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <style>
-      *,
-      *::before,
-      *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 6rem 0;
-        background-color: lightgray;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-      }
-
-      table {
-        border-collapse: collapse;
-        font-size: inherit;
-        margin-bottom: 24px;
-      }
-
-      thead {
-        text-transform: uppercase;
-      }
-
-      tr,
-      td,
-      th {
-        border: 2px solid gray;
-        padding: 1em;
-      }
-
-      table:first-of-type td:nth-child(2),
-      table:first-of-type td:nth-child(3) {
-        color: gray;
-        cursor: pointer;
-      }
-
-      table:last-of-type td {
-        color: gray;
-        cursor: pointer;
-      }
-
-      table:first-of-type td:nth-child(2),
-      table:first-of-type td:nth-child(3),
-      table:last-of-type td{
-        font-size: 1rem;
-        transition: .15s;
-      }
-
-      table:first-of-type td:nth-child(2):hover,
-      table:first-of-type td:nth-child(3):hover,
-      table:last-of-type td:hover {
-        text-decoration: underline;
-        color: black;
-      }
-
-      #copy {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-top: 2px dotted gray;
-        border-bottom: 2px dotted gray;
-        padding: 10px 8px;
-        background-color: white;
-        perspective: 1000px;
-        background-color: gray;
-      }
-
-      #copy.rotate .flip {
-        transform: rotateX(180deg);
-      }
-
-      .flip {
-        width: 100%;
-        padding: 16px;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.5s;
-        transform-style: preserve-3d;
-        border: 2px solid gray;
-        color: wheat;
-        font-weight: 700;
-        letter-spacing: 2px;
-      }
-
-      .flip-front,
-      .flip-back {
-        position: absolute;
-        backface-visibility: hidden;
-      }
-
-      .flip-back {
-        transform: rotateX(180deg);
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Commands Click To Copy</title>
+    <link rel="stylesheet" href="./main.css" />
+    <script src="./app.js" defer></script>
   </head>
 
   <body>
@@ -243,41 +143,5 @@
         </tr>
       </tbody>
     </table>
-
-    <script>
-      const td_groupA = document.querySelectorAll(
-        "table:first-of-type td:nth-child(2)"
-      );
-      const td_groupB = document.querySelectorAll(
-        "table:first-of-type td:nth-child(3)"
-      );
-      const td_groupC = document.querySelectorAll("table:last-of-type td");
-      const allGroups = [...td_groupA, ...td_groupB, ...td_groupC];
-
-      const copy_div = document.getElementById("copy");
-      const flipBack_div = document.querySelector(".flip-back");
-
-      for (let td of allGroups) {
-        td.addEventListener("click", (event) => {
-          copyValue(td);
-          flipBack_div.innerText = `${td.innerText} - COPIED!!!`;
-          //add anim
-          copy_div.classList.add("rotate");
-          setTimeout(function () {
-            copy_div.classList.remove("rotate");
-          }, 1250);
-        });
-      }
-
-      const copyValue = (element) => {
-        let input = document.createElement("input");
-        document.body.appendChild(input);
-        input.setAttribute("value", element.innerText);
-        console.log(input);
-        input.select();
-        document.execCommand("copy");
-        input.remove();
-      };
-    </script>
   </body>
 </html>
