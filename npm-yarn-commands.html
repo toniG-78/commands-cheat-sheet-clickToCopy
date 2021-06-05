@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 6rem 0;
+        background-color: lightgray;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+      table {
+        border-collapse: collapse;
+        font-size: inherit;
+        margin-bottom: 24px;
+      }
+
+      thead {
+        text-transform: uppercase;
+      }
+
+      tr,
+      td,
+      th {
+        border: 2px solid gray;
+        padding: 1em;
+      }
+
+      table:first-of-type td:nth-child(2),
+      table:first-of-type td:nth-child(3) {
+        color: gray;
+        cursor: pointer;
+      }
+
+      table:last-of-type td {
+        color: gray;
+        cursor: pointer;
+      }
+
+      table:first-of-type td:nth-child(2),
+      table:first-of-type td:nth-child(3),
+      table:last-of-type td{
+        font-size: 1rem;
+        transition: .15s;
+      }
+
+      table:first-of-type td:nth-child(2):hover,
+      table:first-of-type td:nth-child(3):hover,
+      table:last-of-type td:hover {
+        text-decoration: underline;
+        color: black;
+      }
+
+      #copy {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 2px dotted gray;
+        border-bottom: 2px dotted gray;
+        padding: 10px 8px;
+        background-color: white;
+        perspective: 1000px;
+        background-color: gray;
+      }
+
+      #copy.rotate .flip {
+        transform: rotateX(180deg);
+      }
+
+      .flip {
+        width: 100%;
+        padding: 16px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.5s;
+        transform-style: preserve-3d;
+        border: 2px solid gray;
+        color: wheat;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+
+      .flip-front,
+      .flip-back {
+        position: absolute;
+        backface-visibility: hidden;
+      }
+
+      .flip-back {
+        transform: rotateX(180deg);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="copy">
+      <div class="flip">
+        <div class="flip-front">CLICK THE COMMAND TO COPY</div>
+        <div class="flip-back"></div>
+      </div>
+    </div>
+
+    <h2>Cheat Sheet: npm / yarn commands</h2>
+    <br />
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center">Command</th>
+          <th style="text-align: center">npm</th>
+          <th style="text-align: center">yarn</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center">Install dependencies</td>
+          <td style="text-align: center"><code>npm install</code></td>
+          <td style="text-align: center"><code>yarn</code></td>
+        </tr>
+        <tr>
+          <td style="text-align: center">Install package</td>
+          <td style="text-align: center"><code>npm install [package]</code></td>
+          <td style="text-align: center"><code>yarn add [package]</code></td>
+        </tr>
+        <tr>
+          <td style="text-align: center">Install dev package</td>
+          <td style="text-align: center">
+            <code>npm install --save-dev [package]</code>
+          </td>
+          <td style="text-align: center">
+            <code>yarn add --dev [package]</code>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center">Uninstall package</td>
+          <td style="text-align: center">
+            <code>npm uninstall [package]</code>
+          </td>
+          <td style="text-align: center"><code>yarn remove [package]</code></td>
+        </tr>
+        <tr>
+          <td style="text-align: center">Uninstall dev package</td>
+          <td style="text-align: center">
+            <code>npm uninstall --save-dev [package]</code>
+          </td>
+          <td style="text-align: center"><code>yarn remove [package]</code></td>
+        </tr>
+        <tr>
+          <td style="text-align: center">Update</td>
+          <td style="text-align: center"><code>npm update</code></td>
+          <td style="text-align: center"><code>yarn upgrade</code></td>
+        </tr>
+        <tr>
+          <td style="text-align: center">Update package</td>
+          <td style="text-align: center"><code>npm update [package]</code></td>
+          <td style="text-align: center">
+            <code>yarn upgrade [package]</code>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center">Global install package</td>
+          <td style="text-align: center">
+            <code>npm install --global [package]</code>
+          </td>
+          <td style="text-align: center">
+            <code>yarn global add [package]</code>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center">Global uninstall package</td>
+          <td style="text-align: center">
+            <code>npm uninstall --global [package]</code>
+          </td>
+          <td style="text-align: center">
+            <code>yarn global remove [package]</code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br /><br />
+
+    <!-- HAVEN'T CHANGED -->
+
+    <h2>npm === yarn</h2>
+    <br />
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center">npm</th>
+          <th style="text-align: center">yarn</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center"><code>npm init</code></td>
+          <td style="text-align: center"><code>yarn init</code></td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><code>npm run</code></td>
+          <td style="text-align: center"><code>yarn run</code></td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><code>npm test</code></td>
+          <td style="text-align: center"><code>yarn test</code></td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><code>npm login</code></td>
+          <td style="text-align: center"><code>yarn login</code></td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><code>npm logout</code></td>
+          <td style="text-align: center"><code>yarn logout</code></td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><code>npm link</code></td>
+          <td style="text-align: center"><code>yarn link</code></td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><code>npm publish</code></td>
+          <td style="text-align: center"><code>yarn publish</code></td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><code>npm cache clean</code></td>
+          <td style="text-align: center"><code>yarn cache clean</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      const td_groupA = document.querySelectorAll(
+        "table:first-of-type td:nth-child(2)"
+      );
+      const td_groupB = document.querySelectorAll(
+        "table:first-of-type td:nth-child(3)"
+      );
+      const td_groupC = document.querySelectorAll("table:last-of-type td");
+      const allGroups = [...td_groupA, ...td_groupB, ...td_groupC];
+
+      const copy_div = document.getElementById("copy");
+      const flipBack_div = document.querySelector(".flip-back");
+
+      for (let td of allGroups) {
+        td.addEventListener("click", (event) => {
+          copyValue(td);
+          flipBack_div.innerText = `${td.innerText} - COPIED!!!`;
+          //add anim
+          copy_div.classList.add("rotate");
+          setTimeout(function () {
+            copy_div.classList.remove("rotate");
+          }, 1250);
+        });
+      }
+
+      const copyValue = (element) => {
+        let input = document.createElement("input");
+        document.body.appendChild(input);
+        input.setAttribute("value", element.innerText);
+        console.log(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+      };
+    </script>
+  </body>
+</html>
